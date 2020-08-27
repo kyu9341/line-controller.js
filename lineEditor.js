@@ -1,13 +1,7 @@
-const fs = require("fs");
-
-const WRITE_DIR = './files\\';
-const TARGET_WORD = '3085';
-const NEWLINE = '\r\n';
-
+const fs = require('fs');
+const os = require('os')
+const NEWLINE = os.EOL;
 const UTF_8 = 'utf8';
-const TARGET_LINE_NUM = 8;
-const INSERT_LINE = `tags:`;
-const INSERT_LINE2 = `\t- Algorithm`;
 
 const readFileList = (dirPath) => {
     return fs.readdirSync(dirPath, (err, fileList) => {
@@ -19,8 +13,8 @@ const filterFileList = (fileList, targetWord) => {
     return fileList.filter(fileName => fileName.indexOf(targetWord) > -1);
 }
 
-const readFileContents = (fileName) => {
-    return fs.readFileSync(WRITE_DIR + fileName, UTF_8, (err, contents) => {
+const readFileContents = (fileName, targetDir = '') => {
+    return fs.readFileSync(targetDir + fileName, UTF_8, (err, contents) => {
         if (err) console.log('Error :', err);
     });
 }
@@ -43,13 +37,20 @@ const update = (fileContent, targetLine, text) => {
     return contentArr;
 }
 
+const select = (fileContent, targetLine, selectCount) => {
+    let contentArr = fileContent.split(NEWLINE);
+    return contentArr.filter((_, idx) =>
+        idx >= targetLine - 1 && idx < targetLine - 1 + selectCount);
+}
+
+
 const insertLine = (targetDir, targetWord, targetLine, ...lines) => {
     return new Promise((resolve, reject) => {
         const fileList = readFileList(targetDir);
         const filteredList = filterFileList(fileList, targetWord);
 
         filteredList.forEach(fileName => {
-            const fileContents = readFileContents(fileName);
+            const fileContents = readFileContents(fileName, targetDir);
             const inserted = insert(fileContents, targetLine, lines);
             const result = inserted.join(NEWLINE);
             fs.writeFile(targetDir + fileName, result, UTF_8, err => {
@@ -66,7 +67,7 @@ const deleteLine = (targetDir, targetWord, targetLine, deleteCount) => {
         const filteredList = filterFileList(fileList, targetWord);
 
         filteredList.forEach(fileName => {
-            const fileContents = readFileContents(fileName);
+            const fileContents = readFileContents(fileName, targetDir);
             const removed = remove(fileContents, targetLine, deleteCount)
             const result = removed.join(NEWLINE);
 
@@ -82,12 +83,12 @@ const updateLine = (targetDir, targetWord, targetLine, text) => {
     return new Promise((resolve, reject) => {
         const fileList = readFileList(targetDir);
         const filteredList = filterFileList(fileList, targetWord);
-    
+
         filteredList.forEach(fileName => {
-            const fileContents = readFileContents(fileName);
+            const fileContents = readFileContents(fileName, targetDir);
             const updated = update(fileContents, targetLine, text)
             const result = updated.join(NEWLINE);
-    
+
             fs.writeFile(targetDir + fileName, result, UTF_8, err => {
                 if (err) console.log('Error :', err);
                 resolve(result);
@@ -96,11 +97,12 @@ const updateLine = (targetDir, targetWord, targetLine, text) => {
     });
 }
 
-module.exports = { insertLine, deleteLine, updateLine };
+const selectLine = (fileName, targetLine, selectCount) => {
+    const fileContents = readFileContents(fileName);
+    const selected = select(fileContents, targetLine, selectCount);
+    const result = selected.join(NEWLINE);
+    return result;
+}
 
-insertLine(WRITE_DIR, TARGET_WORD, TARGET_LINE_NUM, INSERT_LINE, INSERT_LINE2)
-.then(() => deleteLine(WRITE_DIR, TARGET_WORD, 8, 2))
-.then(() => updateLine(WRITE_DIR, TARGET_WORD, 1, '---'))
-
-
+module.exports = { insertLine, deleteLine, updateLine, selectLine };
 

@@ -1,0 +1,35 @@
+{
+  "name": "line-editor",
+  "version": "0.0.0",
+  "description": "Line Unit Editor for Multiple Files",
+  "main": "lineEditor.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyu9341/lineEditer.js.git"
+  },
+  "keywords": [
+    "line",
+    "insertLine",
+    "updateLine",
+    "deleteLine",
+    "fileHandling",
+    "fs",
+    "lineEditor"
+  ],
+  "author": {
+    "name": "kyu9341",
+    "email": "kyu9341@naver.com",
+    "url": "https://kyu9341.github.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kyu9341/lineEditer.js/issues"
+  },
+  "homepage": "https://github.com/kyu9341/lineEditer.js#readme",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}
