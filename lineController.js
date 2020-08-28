@@ -117,7 +117,7 @@ const insertLine = (targetDir, targetWord, targetLine, ...lines) => {
  * @param {String} targetDir 원하는 디렉토리의 경로 ex) 'files/'
  * @param {String} targetWord 파일명에 포함된 원하는 단어
  * @param {Number} targetLine 삭제하고 싶은 라인 번호
- * @param {Number} deleteCount 삭제를 원하는 라인 수
+ * @param {Number} deleteCount 삭제를 원하는 라인 수 (default = 1) optional
  * @return {Promise} 수행된 프로미스. resolve에 목표 라인이 제거된 결과 파일의 내용이 담긴다.
  */
 const deleteLine = (targetDir, targetWord, targetLine, deleteCount = 1) => {
