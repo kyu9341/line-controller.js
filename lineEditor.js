@@ -25,7 +25,7 @@ const insert = (fileContent, targetLine, lines) => {
     return contentArr;
 }
 
-const remove = (fileContent, startLine, deleteCount = 1) => {
+const remove = (fileContent, startLine, deleteCount) => {
     let contentArr = fileContent.split(NEWLINE);
     contentArr.splice(startLine - 1, deleteCount);
     return contentArr;
@@ -61,7 +61,7 @@ const insertLine = (targetDir, targetWord, targetLine, ...lines) => {
     });
 }
 
-const deleteLine = (targetDir, targetWord, targetLine, deleteCount) => {
+const deleteLine = (targetDir, targetWord, targetLine, deleteCount = 1) => {
     return new Promise((resolve, reject) => {
         const fileList = readFileList(targetDir);
         const filteredList = filterFileList(fileList, targetWord);
@@ -97,12 +97,13 @@ const updateLine = (targetDir, targetWord, targetLine, text) => {
     });
 }
 
-const selectLine = (fileName, targetLine, selectCount) => {
+const selectLine = (fileName, targetLine, selectCount = 1) => {
     const fileContents = readFileContents(fileName);
     const selected = select(fileContents, targetLine, selectCount);
     const result = selected.join(NEWLINE);
     return result;
 }
 
-module.exports = { insertLine, deleteLine, updateLine, selectLine };
+module.exports = { insertLine, deleteLine, updateLine, selectLine, NEWLINE };
 
+console.log(NEWLINE);

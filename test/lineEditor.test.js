@@ -1,15 +1,8 @@
-const  { insertLine, deleteLine, updateLine, selectLine } = require('../lineEditor');
+const  { insertLine, deleteLine, updateLine, selectLine, NEWLINE } = require('../lineEditor');
 
-const WRITE_DIR = '../files\\';
+const WRITE_DIR = 'files/';
 const TARGET_WORD = '3085';
-const TARGET_LINE_NUM = 8;
-const INSERT_LINE = `tags:`;
-const INSERT_LINE2 = `\t- Algorithm`;
-
-// insertLine(WRITE_DIR, TARGET_WORD, TARGET_LINE_NUM, INSERT_LINE, INSERT_LINE2)
-// .then(() => deleteLine(WRITE_DIR, TARGET_WORD, 8, 2))
-// .then(() => updateLine(WRITE_DIR, TARGET_WORD, 1, '---'))
-// console.log(selectLine('files/algorithm3055.md', 1, 8));
+const TARGET_FILE = 'files/algorithm3085.md';
 
 const SELECT_LINE_TEST = 
 `---
@@ -23,12 +16,23 @@ categories: algorithm
 
 describe("test lineEditor", () => {
     it("selectLine", () => {
-        const selected = selectLine('files/algorithm3085.md', 1, 8);
-        const origin = SELECT_LINE_TEST.split('\n');
-        const target = selected.split('\r\n');
-        console.log(origin);
-        console.log(target);
-        expect(origin.every((_, idx) => target[idx] === origin[idx])).toBe(true);
+        const selected = selectLine(TARGET_FILE, 1, 8);
+        expect(SELECT_LINE_TEST).toEqual(selected);
+    })
+    it("insertLine", async () => {
+        await insertLine(WRITE_DIR, TARGET_WORD, 1, 'insert', 'insert2');
+        const selected = selectLine(TARGET_FILE, 1, 2);
+        expect(`insert${NEWLINE}insert2`).toEqual(selected);
+    })
+    it("updateLine", async () => {
+        await updateLine(WRITE_DIR, TARGET_WORD, 1, 'update');
+        const selected = selectLine(TARGET_FILE, 1);
+        expect('update').toEqual(selected);
+    })
+    it("deleteLine", async () => {
+        await deleteLine(WRITE_DIR, TARGET_WORD, 1, 2);
+        const selected = selectLine(TARGET_FILE, 1);
+        expect('---').toEqual(selected);
     })
 })
 
