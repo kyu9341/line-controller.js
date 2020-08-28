@@ -17,9 +17,9 @@ const { insertLine, deleteLine, updateLine, selectLine } = require('line-control
 ```
 
 ![image](https://user-images.githubusercontent.com/49153756/91595653-dc660700-e99e-11ea-92c5-19e2a5a37a3b.png)
-### 🖋insertLine
+### 🖋 insertLine
 
-**example**
+**📎 example**
 
 ```jsx
 /**
@@ -34,7 +34,7 @@ const { insertLine, deleteLine, updateLine, selectLine } = require('line-control
 insertLine('files/', 'javascript', 8, 'tag:', '\t- JavaScript');
 ```
 
-🔎 before
+🔎  before
 
 ```
 ---
@@ -48,7 +48,7 @@ categories: JavaScript
 # JavaScript 1
 ```
 
-🔎 after
+🔎  after
 
 ```
 ---
@@ -66,7 +66,7 @@ tag:
 
 ### ⌫deleteLine
 
-**example**
+**📎 example**
 
 ```jsx
 /**
@@ -81,7 +81,7 @@ tag:
 deleteLine('files/', 'javascript', 8, 2);
 ```
 
-🔎 before
+🔎  before
 
 ```
 ---
@@ -97,7 +97,7 @@ tag:
 # JavaScript 1
 ```
 
-🔎 after
+🔎  after
 
 ```
 ---
@@ -111,9 +111,9 @@ categories: JavaScript
 # JavaScript 1
 ```
 
-### ✏️updateLine
+### ✏️ updateLine
 
-**example**
+**📎 example**
 
 ```jsx
 (async () => {
@@ -122,7 +122,7 @@ categories: JavaScript
 })();
 ```
 
-🔎 before
+🔎  before
 
 ```
 ---
@@ -136,7 +136,7 @@ categories: JavaScript
 # JavaScript 1
 ```
 
-🔎 after(output)
+🔎  after(output)
 
 ```
 ---
@@ -150,7 +150,8 @@ categories: JavaScript
 # JavaScript 1
 ```
 
-### 📌selectLine
+### 📌 selectLine
+**📎 example**
 
 ```jsx
 /**
@@ -165,7 +166,7 @@ const result = selectLine('/files/javascript1.md', 2, 3);
 console.log(result);
 ```
 
-🔎 output
+🔎  output
 
 ```
 layout: post
