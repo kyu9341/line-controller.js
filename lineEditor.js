@@ -105,5 +105,3 @@ const selectLine = (fileName, targetLine, selectCount = 1) => {
 }
 
 module.exports = { insertLine, deleteLine, updateLine, selectLine, NEWLINE };
-
-console.log(NEWLINE);
