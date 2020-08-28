@@ -1,23 +1,26 @@
 {
-  "name": "line-editor",
+  "name": "line-controller",
   "version": "0.0.0",
   "description": "Line Unit Editor for Multiple Files",
-  "main": "lineEditor.js",
+  "main": "lineController.js",
   "scripts": {
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kyu9341/lineEditer.js.git"
+    "url": "git+https://github.com/kyu9341/line-controller.js.git"
   },
   "keywords": [
     "line",
     "insertLine",
     "updateLine",
     "deleteLine",
+    "selectLine",
     "fileHandling",
     "fs",
-    "lineEditor"
+    "lineEditor",
+    "lineController",
+    "line-controller"
   ],
   "author": {
     "name": "kyu9341",
@@ -26,9 +29,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kyu9341/lineEditer.js/issues"
+    "url": "https://github.com/kyu9341/line-controller.js/issues"
   },
-  "homepage": "https://github.com/kyu9341/lineEditer.js#readme",
+  "homepage": "https://github.com/kyu9341/line-controller.js#readme",
   "devDependencies": {
     "jest": "^26.4.2"
   }

@@ -1,4 +1,4 @@
-const  { insertLine, deleteLine, updateLine, selectLine, NEWLINE } = require('../lineEditor');
+const  { insertLine, deleteLine, updateLine, selectLine, NEWLINE } = require('../lineController');
 
 const WRITE_DIR = 'files/';
 const TARGET_WORD = '3085';
