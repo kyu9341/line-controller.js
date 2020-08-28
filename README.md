@@ -1,6 +1,6 @@
 # line-controller.js
 Line Unit Editor for Multiple Files
-[NPM page](https://www.npmjs.com/package/line-controller)
+- [NPM page](https://www.npmjs.com/package/line-controller)
 
 ## Install
 
