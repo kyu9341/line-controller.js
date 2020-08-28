@@ -1,9 +1,5 @@
 # line-controller.js
-### Line Unit Editor for Multiple Files
-
-# line-controller.js
-
-### Line Unit Editor for Multiple Files
+Line Unit Editor for Multiple Files
 
 ## Install
 
@@ -19,7 +15,7 @@ npm install line-controller
 const { insertLine, deleteLine, updateLine, selectLine } = require('line-controller');
 ```
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eb7b3080-b387-4a5c-b2c5-044c13b12578/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eb7b3080-b387-4a5c-b2c5-044c13b12578/Untitled.png)
+![image](https://user-images.githubusercontent.com/49153756/91595653-dc660700-e99e-11ea-92c5-19e2a5a37a3b.png)
 
 ### insertLine
 
