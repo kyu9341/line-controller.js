@@ -17,8 +17,7 @@ const { insertLine, deleteLine, updateLine, selectLine } = require('line-control
 ```
 
 ![image](https://user-images.githubusercontent.com/49153756/91595653-dc660700-e99e-11ea-92c5-19e2a5a37a3b.png)
-
-### insertLine
+### 🖋insertLine
 
 **example**
 
@@ -35,7 +34,7 @@ const { insertLine, deleteLine, updateLine, selectLine } = require('line-control
 insertLine('files/', 'javascript', 8, 'tag:', '\t- JavaScript');
 ```
 
-- before
+🔎 before
 
 ```
 ---
@@ -49,7 +48,7 @@ categories: JavaScript
 # JavaScript 1
 ```
 
-- after
+🔎 after
 
 ```
 ---
@@ -65,7 +64,7 @@ tag:
 # JavaScript 1
 ```
 
-### deleteLine
+### ⌫deleteLine
 
 **example**
 
@@ -75,17 +74,14 @@ tag:
  * @param {String} targetDir 원하는 디렉토리의 경로 ex) 'files/'
  * @param {String} targetWord 파일명에 포함된 원하는 단어
  * @param {Number} targetLine 삭제하고 싶은 라인 번호
- * @param {Number} deleteCount 삭제를 원하는 라인 수
+ * @param {Number} deleteCount 삭제를 원하는 라인 수 (default = 1) optional
  * @return {Promise} 수행된 프로미스. resolve에 목표 라인이 제거된 결과 파일의 내용이 담긴다.
  */
 
-(async () => {
-    const result = await deleteLine('files/', 'javascript', 8, 2);
-    console.log(result);
-})();
+deleteLine('files/', 'javascript', 8, 2);
 ```
 
-- before
+🔎 before
 
 ```
 ---
@@ -101,7 +97,7 @@ tag:
 # JavaScript 1
 ```
 
-- after(output)
+🔎 after
 
 ```
 ---
@@ -113,4 +109,66 @@ author: kwon
 categories: JavaScript
 ---
 # JavaScript 1
+```
+
+### ✏️updateLine
+
+**example**
+
+```jsx
+(async () => {
+    const result = await updateLine('files/', 'javascript', 3, 'title: "updated JavaScript 1"');
+    console.log(result);
+})();
+```
+
+🔎 before
+
+```
+---
+layout: post
+title: "JavaScript 1"
+subtitle: "JavaScript Study"
+date: 2020-08-28 09:51:12
+author: kwon
+categories: JavaScript
+---
+# JavaScript 1
+```
+
+🔎 after(output)
+
+```
+---
+layout: post
+title: "updated JavaScript 1"
+subtitle: "JavaScript Study"
+date: 2020-08-28 09:51:12
+author: kwon
+categories: JavaScript
+---
+# JavaScript 1
+```
+
+### 📌selectLine
+
+```jsx
+/**
+ * @description fileName 파일의 원하는 line을 읽어온다.
+ * @param {String} fileName 읽고자 하는 파일의 경로 ex) 'files/abc.txt'
+ * @param {Number} targetLine 읽고 싶은 시작 line 번호
+ * @param {Number} selectCount 읽고자 하는 line 수 (default = 1) optional
+ * @return {String} 읽어온 결과 문자열
+ */
+
+const result = selectLine('/files/javascript1.md', 2, 3);
+console.log(result);
+```
+
+🔎 output
+
+```
+layout: post
+title: "updated JavaScript 1"
+subtitle: "JavaScript Study"
 ```
