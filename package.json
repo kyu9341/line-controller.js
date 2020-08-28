@@ -1,6 +1,6 @@
 {
   "name": "line-controller",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Line Unit Editor for Multiple Files",
   "main": "lineController.js",
   "scripts": {
