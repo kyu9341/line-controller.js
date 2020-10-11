@@ -116,6 +116,15 @@ categories: JavaScript
 **📎 example**
 
 ```jsx
+/**
+ * @description targetDir에 있는 파일들 중 파일명에 targetWord가 포함되는 파일에 원하는 line을 수정한다.
+ * @param {String} targetDir 원하는 디렉토리의 경로 ex) 'files/'
+ * @param {String} targetWord 파일명에 포함된 원하는 단어
+ * @param {Number} targetLine 수정하고 싶은 라인 번호
+ * @param  {String} text 수정하고 싶은 문자열
+ * @return {Promise} 수행된 프로미스. resolve에 수정된 결과 파일의 내용이 담긴다.
+ */
+ 
 (async () => {
     const result = await updateLine('files/', 'javascript', 3, 'title: "updated JavaScript 1"');
     console.log(result);
